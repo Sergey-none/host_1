@@ -17,7 +17,7 @@ from .obj import upload_f
 
 def post_list(request):
     bject_list = Post.published.all()  
-    paginator = Paginator(object_list, 6)  # 3 поста на каждой странице  
+    paginator = Paginator(bject_list, 6)  # 3 поста на каждой странице  
     page = request.GET.get('page')  
     try:  
         posts = paginator.page(page)
