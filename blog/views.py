@@ -20,15 +20,13 @@ def post_list(request):
     paginator = Paginator(bject_list, 6)  # 3 поста на каждой странице  
     page = request.GET.get('page')  
     try:  
-        posts = paginator.page(page)
+        posts = paginator.page(request.GET.get('page'))
     except PageNotAnInteger:  
         # Если страница не явл	яется целым числом, поставим первую страницу  
         posts = paginator.page(1)  
     except EmptyPage:  
         # Если страница больше максимальной, доставить последнюю страницу результатов  
         posts = paginator.page(paginator.num_pages)
-    except:
-	posts = bject_list
     return render(request,  
 	          'blog/post/list.html',  
 		  {'page': page,  
