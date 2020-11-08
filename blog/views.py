@@ -16,11 +16,11 @@ from .obj import upload_f
     f_url = iter(request.FILES)'''
 
 def post_list(request):
-    '''posts = Post.published.all() 
+    posts = Post.published.all() 
     return render(request, 
               'blog/post/list.html', 
-              {'posts': posts})'''
-    object_list = Post.published.all()  
+              {'posts': posts})
+    '''object_list = Post.published.all()  
     paginat = Paginator(object_list, 6)  # 3 поста на каждой странице  
     page_0 = request.GET.getlist('page')[0]
     try:  
@@ -36,7 +36,7 @@ def post_list(request):
     return render(request,  
 	          'blog/post/list.html',  
 		  {'page': page_0,  
-		   'posts': posts})
+		   'posts': posts})'''
 def post_new(request):
     form = PostForm()
     if request.method == "POST":
