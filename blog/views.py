@@ -27,6 +27,8 @@ def post_list(request):
     except EmptyPage:  
         # Если страница больше максимальной, доставить последнюю страницу результатов  
         posts = paginator.page(paginator.num_pages)
+    except:
+	posts = bject_list
     return render(request,  
 	          'blog/post/list.html',  
 		  {'page': page,  
