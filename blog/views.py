@@ -21,8 +21,6 @@ def post_list(request):
     page = request.GET.get('page')  
     try:  
         posts = paginator.page(page)
-    except ProgrammingError:
-    	posts = paginator.page(1)
     except PageNotAnInteger:  
         # Если страница не явл	яется целым числом, поставим первую страницу  
         posts = paginator.page(1)  
