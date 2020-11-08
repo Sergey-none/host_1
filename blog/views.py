@@ -22,7 +22,7 @@ def post_list(request):
               {'posts': posts})'''
     object_list = Post.published.all()  
     paginat = Paginator(object_list, 6)  # 3 поста на каждой странице  
-    page_0 = request.GET.get('page')  
+    page_0 = int(request.GET.get('page'))  
     try:  
         posts = paginat.page(page_0)
     except ProgrammingError:
