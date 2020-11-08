@@ -16,17 +16,23 @@ from .obj import upload_f
     f_url = iter(request.FILES)'''
 
 def post_list(request):
-    bject_list = Post.published.all()  
-    paginator = Paginator(bject_list, 6)  # 3 поста на каждой странице  
+    '''posts = Post.published.all() 
+    return render(request, 
+              'blog/post/list.html', 
+              {'posts': posts})'''
+    object_list = Post.published.all()  
+    paginat = Paginator(object_list, 6)  # 3 поста на каждой странице  
     page = request.GET.get('page')  
     try:  
-        posts = paginator.page(request.GET.get('page'))
+        posts = paginat.page(page)
+    except ProgrammingError:
+    	posts = paginat.page(1)
     except PageNotAnInteger:  
         # Если страница не явл	яется целым числом, поставим первую страницу  
-        posts = paginator.page(1)  
+        posts = paginat.page(1)  
     except EmptyPage:  
         # Если страница больше максимальной, доставить последнюю страницу результатов  
-        posts = paginator.page(paginator.num_pages)
+        posts = paginat.page(paginat.num_pages)
     return render(request,  
 	          'blog/post/list.html',  
 		  {'page': page,  
