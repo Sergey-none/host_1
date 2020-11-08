@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <title>Семейный файлообменник</title>
+</head>
+<body>
+  <nav class="nav1">
+    <p class="nav-p">Файлообменник</p>
+    <div align = "right" class="fl1">
+      <a href="page.html" class="a-nav">Главная</a>
+      <a href="new/" class="a-nav">Создать запись</a>
+    </div>
+  </nav>
+  <header style="background-image: url('{% static '1.jpg' %}');background-repeat: no-repeat;background-size: cover;text-align: center;align-items: center;">
+    <div style="padding:15%;">
+      <h1 class="head-h">Файлообменник</h1>
+      <p class="head-p">Долгосрочное хранание файлов и записей</p>
+    </div>
+  </header>
+  <div style="align-items: center; text-align: center;"><h1 class="main-p">Файлы</h1></div>
+  <div class="mar">
+{% block content %}
+    {% for post in posts %}
+      <a href="{{ post.get_absolute_url }}" class="posts-links">  
+        <div class="product-item">
+          <h3>{{ post.title }}</h3>
+          <p class="p-item-1">
+                Текст(первые несколько слов): <p class="p-item-1">{{ post.body|truncatewords:5|linebreaks }} </p>
+            </p>
+            <span class="price">Прикреплённый файл: {{ post.file_f }}</span>
+        </div>
+      </a>  
+    {% endfor %}
+{% endblock %}     
+  </div>       
+ 
+<p style="display: none;">  
+  Опубликовано {{ post.publsish }} Автор: {{ post.author }}  
+</p>
+<p style="text-align: center; margin: auto;">
+  {% include "../pagination.html" with page=posts %}  
+</p>  
+<p>
+</p>
+    
+  
+</body>
+</html>

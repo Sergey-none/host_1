@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <title>Семейный файлообменник</title>
+</head>
+<body>
+  <nav class="nav1">
+    <p class="nav-p">Файлообменник</p>
+    <div align = "right" class="fl1">
+    </div>
+  </nav>
+  <header style="background-image: url('{% static '1.jpg' %}');background-repeat: no-repeat;background-size: cover;text-align: center;align-items: center;">
+    <div style="padding:15%;">
+      <h1 class="head-h">{{ post.title }}</h1>
+      <p class="head-p">Опубликовано {{ post.publish }}<br>+3 часа</p>
+    </div>
+  </header>
+  <div style="align-items: center; text-align: center;"><h1 class="main-p">Пост:</h1></div>
+{% block content %}
+<div style="margin: 10px;border: 2px solid #444444; background: white;font-family: 'Open Sans';text-align: center;align-items: center;">
+	<p class="p-item-1">
+        <p style="">{{ post.body|linebreaks }}</p>
+    </p>
+    <span class="price"><a href="{{ post.get_link }}" style="color: #fc5a5a;text-decoration-line: none;">Прикреплённый файл: {{ post.file_f }}</a></span>
+</div>
+{% endblock %}            
+</body>
+</html>
+
