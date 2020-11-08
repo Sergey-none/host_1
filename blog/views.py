@@ -22,9 +22,9 @@ def post_list(request):
               {'posts': posts})'''
     object_list = Post.published.all()  
     paginat = Paginator(object_list, 6)  # 3 поста на каждой странице  
-    page = request.GET.get('page')  
+    page_0 = request.GET.get('page')  
     try:  
-        posts = paginat.page(page)
+        posts = paginat.page(page_0)
     except ProgrammingError:
     	posts = paginat.page(1)
     except PageNotAnInteger:  
@@ -35,7 +35,7 @@ def post_list(request):
         posts = paginat.page(paginat.num_pages)
     return render(request,  
 	          'blog/post/list.html',  
-		  {'page': page,  
+		  {'page': page_0,  
 		   'posts': posts})
 def post_new(request):
     form = PostForm()
