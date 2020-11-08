@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'site1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-q = BASE_DIR + '/' + '/db.sqlite3'
+q = str(BASE_DIR) + '/' + 'db.sqlite3'
 
 DATABASES = {
     'default': {
