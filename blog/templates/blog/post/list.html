@@ -42,7 +42,9 @@
     {% endfor %}
 {% endblock %}     
   </div>       
- 
+ <p style="text-align: center; margin: auto;">
+  {% include "../pagination.html" with page=posts %}  
+</p>  
 <p style="display: none;">  
   Опубликовано {{ post.publsish }} Автор: {{ post.author }}  
 </p>
